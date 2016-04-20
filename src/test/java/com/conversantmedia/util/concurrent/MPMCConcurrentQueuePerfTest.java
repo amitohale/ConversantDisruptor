@@ -20,39 +20,32 @@ package com.conversantmedia.util.concurrent;
  * #L%
  */
 
+import com.conversantmedia.util.estimation.Percentile;
 import org.junit.Ignore;
 import org.junit.Test;
-
-import com.conversantmedia.util.estimation.Percentile;
 
 /**
  * Created by jcairns on 5/28/14.
  */
 @Ignore
-public class MultithreadConcurrentQueuePerfTest {
+public class MPMCConcurrentQueuePerfTest {
 
     @Test
     public void testPerformance() throws InterruptedException, Percentile.InsufficientSamplesException {
         System.out.println("1x1 using MultiThread");
-        ConcurrentQueuePerformanceTest.testPerformance(new MultithreadConcurrentQueue<>(1024));
+        ConcurrentQueuePerformanceTest.testPerformance(new MPMCConcurrentQueue<Integer>(1024));
     }
 
 
     @Test
     public void testRate() throws InterruptedException, Percentile.InsufficientSamplesException {
-        ConcurrentQueuePerformanceTest.testRate(new MultithreadConcurrentQueue<>(1024));
+        ConcurrentQueuePerformanceTest.testRate(new MPMCConcurrentQueue<Integer>(1024));
     }
 
     @Ignore
     public void testNThreadPerformance() throws Percentile.InsufficientSamplesException, InterruptedException {
         System.out.println("NThread in MultiThread");
-        ConcurrentQueuePerformanceTest.testNThreadPerformance(new MultithreadConcurrentQueue<>(1024));
-    }
-
-    @Test
-    public void testNxNThreadPerformance() throws Percentile.InsufficientSamplesException, InterruptedException {
-        System.out.println("NThread in MultiThread");
-        ConcurrentQueuePerformanceTest.testNxNThreadPerformance(new MultithreadConcurrentQueue<>(1024));
+        ConcurrentQueuePerformanceTest.testNThreadPerformance(new MPMCConcurrentQueue<Integer>(1024));
     }
 
     @Test
