@@ -80,7 +80,7 @@ class MPMCConcurrentQueue<E> implements ConcurrentQueue<E> {
             }
         }
         cell.entry = e;
-        cell.seq.lazySet(tail + 1);
+        cell.seq.set(tail + 1);
         return true;
     };
 
@@ -107,7 +107,7 @@ class MPMCConcurrentQueue<E> implements ConcurrentQueue<E> {
             return cell.entry;
         } finally {
             cell.entry = null;
-            cell.seq.lazySet(head + mask + 1L);
+            cell.seq.set(head + mask + 1L);
         }
 
     }
@@ -160,7 +160,7 @@ class MPMCConcurrentQueue<E> implements ConcurrentQueue<E> {
         return false;
 
     }
-      
+
     protected static final class Cell<R> {
         final AtomicLong seq = new PaddedAtomicLong(0L);
         R entry;
