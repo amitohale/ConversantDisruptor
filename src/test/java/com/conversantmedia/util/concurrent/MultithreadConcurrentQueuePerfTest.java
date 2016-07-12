@@ -55,10 +55,4 @@ public class MultithreadConcurrentQueuePerfTest {
         ConcurrentQueuePerformanceTest.testNxNThreadPerformance(new MultithreadConcurrentQueue<>(1024));
     }
 
-    @Test
-    public void testNxNThreadPerformance() throws Percentile.InsufficientSamplesException, InterruptedException {
-        System.out.println("NThread in MultiThread");
-        ConcurrentQueuePerformanceTest.testNxNThreadPerformance(new MPMCConcurrentQueue<Integer>(1024));
-    }
-
 }
